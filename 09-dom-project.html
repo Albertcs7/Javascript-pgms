@@ -2,15 +2,24 @@
 <head>
     <title>DOM project</title>
 </head>
-  <body>
+<body>
    <p>Youtube subscribe Button</p>
    <button onclick='subscribe()' class='js-b'>Subscribe</button>
+
    <p>Amazon shipping Calculator<br>Order under $40 = +$10 shipping<br>Order above $40 = FREE shipping</p>
-   <input placeholder="Cost of Order" class="js-cost">
+
+   <input placeholder="Cost of Order" class="js-cost " onkeydown="
+   handleKeyDown(event);
+   ">
    <button onclick="calculateTotal()">Calculate</button>
    <p class="js-total-cost"></p>
-
+    
   <script>
+    function handleKeyDown(event){
+        if(event.key === 'Enter'){
+        calculateTotal();   
+        }
+    }
     function subscribe(){
         const buttonElement = document.querySelector('.js-b');
         buttonElement.innerText==='Subscribe'? buttonElement.innerText='Subscribed':buttonElement.innerHTML='Subscribe';
@@ -26,5 +35,5 @@
 
     } 
   </script>
-   </body>
+</body>
 </html>
