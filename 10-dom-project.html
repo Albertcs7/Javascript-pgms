@@ -1,0 +1,76 @@
+<html>
+<head>
+    <title>DOM project</title>
+    <style>
+        .css-sub{
+            border: none;
+            background-color: black;
+            color: aliceblue;
+            padding: 10px;
+            font-weight: bold;
+            border-radius: 40px;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-bottom: 30px;
+            cursor:pointer;
+        }
+        .is-subscribed{
+            background-color: rgba(201, 200, 200, 0.99);
+            color: black;
+        }
+        body{
+            font-family: Arial;
+        }
+        .cost-input{
+            padding: 7px;
+        }
+        .css-calc{
+            padding:8px;
+            background-color:limegreen;
+            color:white;
+            border:none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+   <p>Youtube subscribe Button</p>
+   <button onclick='subscribe()' class='js-b css-sub'>Subscribe</button>
+
+   <p>Amazon shipping Calculator<br>Order under $40 = +$10 shipping<br>Order above $40 = FREE shipping</p>
+
+   <input placeholder="Cost of Order" class="js-cost cost-input " onkeydown="
+   handleKeyDown(event);
+   ">
+   <button onclick="calculateTotal()" class="css-calc">Calculate</button>
+   <p class="js-total-cost"></p>
+    
+  <script>
+    function handleKeyDown(event){
+        if(event.key === 'Enter'){
+        calculateTotal();   
+        }
+    }
+    function subscribe(){
+        const buttonElement = document.querySelector('.js-b');
+        if(buttonElement.innerText==='Subscribe'){
+            buttonElement.innerText='Subscribed';
+            buttonElement.classList.add('is-subscribed');
+        }else{
+            buttonElement.innerHTML='Subscribe'
+            buttonElement.classList.remove('is-subscribed');
+        }
+    }
+    function calculateTotal(){
+        const cost = Number(document.querySelector('.js-cost').value);
+        if(cost >= 40){
+            let a = cost+10;
+            document.querySelector('.js-total-cost').innerHTML=`$${a}`;
+        }else{
+            document.querySelector('.js-total-cost').innerHTML=`$${cost}`;
+        }
+
+    } 
+  </script>
+</body>
+</html>
